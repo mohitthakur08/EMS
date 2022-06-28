@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 ruby '2.7.6'
 
