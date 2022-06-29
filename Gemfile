@@ -4,6 +4,7 @@ gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'bootstrap-sass', '~> 3.4.1'
 
 ruby '2.7.6'
+gem 'faker', '~>2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.6'

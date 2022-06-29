@@ -3,5 +3,6 @@
         
         
         <p class="lead text-info">wemcome to login page</p>
-        <a href="">Log in</a>
+        <%= link_to "log_in", new_user_session_path ,class:"btn btn-lg btn-primary"%>
+        <%= link_to "log_out", destroy_user_session_path ,method: :delete, class:"btn btn-lg btn-primary"  %>
     </div>
