@@ -1,0 +1,17 @@
+<% if admin_user%>
+  <div class="jumbotron text-center">
+    <h1>welcom to the admin page</h1>
+    <p class="lead text-info">  </p>
+    <%= link_to "Create Employee",new_user_registration_path, class: "btn btn-lg btn-primary"%>
+  </div>
+    <div class="jumbotron text-center">
+    <h1>welcom to the admin page</h1>
+    <p class="lead text-info">  </p>
+    <%= link_to "Create Project",new_user_registration_path, class: "btn btn-lg btn-primary"%>
+  </div>
+    <div class="jumbotron text-center">
+    <h1>All Employees </h1>
+    <p class="lead text-info"> View All Employees with their Reporting manager Manager</p>
+    <%= link_to "Show",new_user_registration_path, class: "btn btn-lg btn-primary"%>
+  </div>
+<%end%>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'home/index'
-  get '/Dashboard',to: "user#Dashboard" 
+  get '/users/show' ,to: "users#show"
   devise_for :users
   # delete '/users/sign_out', to: "home#destroy"
   root to: "home#index"
