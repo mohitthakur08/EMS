@@ -12,6 +12,26 @@
     <div class="jumbotron text-center">
     <h1>All Employees </h1>
     <p class="lead text-info"> View All Employees with their Reporting manager Manager</p>
-    <%= link_to "Show",new_user_registration_path, class: "btn btn-lg btn-primary"%>
+    <%= link_to "Show",users_index_path, class: "btn btn-lg btn-primary"%>
   </div>
 <%end%>
+
+
+
+
+
+<% if !admin_user%>
+
+ <div class="jumbotron text-center">
+    <h1>See your projects</h1>
+    <p class="lead text-info">  </p>
+    <%= link_to "Click here",users_index_path, class: "btn btn-lg btn-primary"%>
+  </div>
+<%end%>
+
+
+
+
+
+
+    

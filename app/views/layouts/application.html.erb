@@ -11,12 +11,13 @@
 <section>
   <%= render 'layouts/header'%>
 </section>
-
+  <strong><p class="notice"><%= notice%></p></strong>
+  <p class="alert"><%= alert%></p>
 <main role="main" class="container">
-<%=yield%>
-
-    
+  <%=yield%>
+     
 </main>   
+
 <section>
   <%= render 'layouts/footer'%>
 </section>      
