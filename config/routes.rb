@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/users/index', to: "users#index"
   get '/users/show' ,to: "users#show"
-  devise_for :users,controllers: { confirmations: 'confirmations' }
+  devise_for :users
   # delete '/users/sign_out', to: "home#destroy"
   root to: "home#index"
  
