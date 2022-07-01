@@ -1,12 +1,13 @@
 class User < ApplicationRecord
   has_many :projects
   has_one :manager, through: :user 
-  has_many :manager, through: :admin
+  has_many :manager
   
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  #  :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, 
+         :confirmable
       
          
   
