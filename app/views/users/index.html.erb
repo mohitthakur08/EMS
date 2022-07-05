@@ -1,39 +1,43 @@
 <% if admin_user %>
-<h1>All users</h1>
+<h1 class=text-center>All users</h1>
 <% @users.each do |user| %>
     <li>
-      <%= user.id%> <strong>Employee Name : </strong>
+      <strong> Employee ID : </strong> <%= user.id%> <strong>Employee Name : </strong>
       <%= user.first_name %>
       <%= user.last_name %><strong> Employee Email : </strong>
-      <%= user.email%>
+      <%= user.email%><br>
+      
       
     </li>
   <% end %>
+  <br>
 <section>
-<h1> All Projects</h1>
+<h1 class=text-center> All Projects</h1>
  <% @projects.each do |project| %>
     <li>
       
-      <%= project.user_id %><strong>Employee Name : </strong>
+     <strong> Employee ID : </strong> <%= project.user_id %><strong> Employee Name : </strong>
       <%= project.user.first_name %>
-      <%= project.user.last_name %><strong>Project Name : </strong>
-      <%= project.project_name %><strong>Project Status : </strong>
-      <%= project.status %>
+      <%= project.user.last_name %><strong>      Project Name : </strong>
+      <%= project.project_name %><strong> Project Status : </strong>
+      <%= project.status %> <strong> Manager Id : </strong>
+      <%= project.manager_id %>
       
     </li>
   <% end %>
 </section>
 <%else%>
-<h1> All Projects</h1>
+<h1 class=text-center> All Projects</h1>
 <ul class="users">
     <% @projects.each do |project| %>
     <li>
       <% if project.user_id == current_user.id %>
       <%= project.user_id %>
       <%= project.user.first_name %>
-      <%= project.user.last_name %><strong>Project Name : </strong>
-      <%= project.project_name %><strong>Project Status : </strong>
-      <%= project.status %>
+      <%= project.user.last_name %>
+      <strong>Project Name : </strong> <%= project.project_name %>
+      <strong>Project Status : </strong> <%= project.status %>
+      <strong>Manager ID : </strong> <%= project.manager_id %>
       
       <%end%>
     </li>
