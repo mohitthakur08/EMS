@@ -1,0 +1,39 @@
+<h1 class=text-center>All Leaves</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+    
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Reason</th>
+        <th scope="col">status</th>
+        <th scope="col">email</th>
+        
+        
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @leave.each do |l| %>
+        <tr>
+          <%if admin_user%>
+            <td> <%= l.leave_from %> </td>
+            <td> <%= l.leave_to %> </td>
+            <td> <%= l.leave_reason %> </td>
+            <td> <%= l.status %> </td>
+            <td> <%= l.user.email %> </td>
+            <td><%= link_to "Approve",leaves_approve_leave_leafe_path(l), class: "btn btn-lg btn-primary"%>
+            <td><%= link_to "reject",leaves_reject_leave_leafe_path(l), class: "btn btn-lg btn-primary"%>
+          <%elsif l.user_id == current_user.id %>
+            <td> <%= l.leave_from %> </td>
+            <td> <%= l.leave_to %> </td>
+            <td> <%= l.leave_reason %> </td>
+            <td> <%= l.status %> </td>
+            <td> <%= l.user.email %> </td>
+            <td><%= link_to "withdraw",leaves_reject_leave_leafe_path(l), class: "btn btn-lg btn-primary"%>
+         <%end%>
+         
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

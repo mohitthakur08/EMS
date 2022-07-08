@@ -8,7 +8,7 @@
       <%= f.text_field :task, class: 'form-control' %>
 
       <%= f.label :Working_hours %>
-      <%= f.text_field :Working_hours, class: 'form-control' %>
+      <%= f.time_field :Working_hours, class: 'form-control' %>
 
       <%= f.hidden_field :user_id, value:current_user.id %>
 

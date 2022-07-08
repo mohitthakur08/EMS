@@ -1,21 +1,20 @@
 class ProjectsController < ApplicationController
   def new
-    project = current_user.projects.new(project_params)
+    @project= Project.new
   end
 
   def create
-    project.save
+    @project=Project.new(project_params)
+    @project.save
+    redirect_to root_path
   end
-  
-  def manager_name
-    manager=User.where(manager_id:current_user.manager_id)
-    manager_name =  manager.pluck(:first_name,:last_name)
+  def index
+    @users = User.all
+    @projects =Project.all
   end
-
-
 
   private
     def project_params
-      params.require(:project).permit(:project_name, :status, :task,)
+      params.require(:project).permit(:project_name, :status,:user_id, :manager_id)
     end
 end

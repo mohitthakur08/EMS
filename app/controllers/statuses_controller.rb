@@ -7,9 +7,11 @@ class StatusesController < ApplicationController
   def create
     @status=Status.new(status_params)
     @status.save
+    redirect_to users_show_path
   end
   
-  def update
+  def index
+    @status=Status.all
   end
   
   private

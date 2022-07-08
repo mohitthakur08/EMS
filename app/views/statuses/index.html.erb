@@ -1,0 +1,22 @@
+<h1 class=text-center>Your Leaves</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Project</th>
+        <th scope="col">Hours</th>
+        <th scope="col">Task</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @status.each do |s| %>
+        <tr>
+          
+          <td> <%= s.project_name %> </td>
+          <td> <%= s.working_hours %> </td>
+          <td> <%= s.task %> </td>
+         
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

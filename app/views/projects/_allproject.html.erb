@@ -1,0 +1,28 @@
+<section>
+    <h1 class=text-center> All Projects</h1>
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First name</th>
+        <th scope="col">last name</th>
+        <th scope="col">project name</th>
+        <th scope="col">status</th>
+        <th scope="col">manager Id</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @projects.each do |project| %>
+     <tr>
+      
+       <td><%= project.user_id %></td>
+        <td><%= project.user.first_name %></td>
+        <td><%= project.user.last_name %></td>
+        <td><%= project.project_name %></td>
+        <td><%= project.status %></td>
+        <td><%= project.manager_id %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+    </table>
+  </section>
