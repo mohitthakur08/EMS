@@ -30,9 +30,11 @@
             <td> <%= l.leave_reason %> </td>
             <td> <%= l.status %> </td>
             <td> <%= l.user.email %> </td>
-            <td><%= link_to "withdraw",leaves_reject_leave_leafe_path(l), class: "btn btn-lg btn-primary"%>
-         <%end%>
-         
+            <td><% if l.status == "Hold" %>
+              <%= link_to "withdraw",leaves_reject_leave_leafe_path(l), class:"btn btn-outline-primary"%></td>
+            <%end%>
+            
+          <%end%>
         </tr>
       <% end %>
     </tbody>
