@@ -1,4 +1,8 @@
+
+
+
 <h1 class=text-center>Your Leaves</h1>
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -9,13 +13,16 @@
     </thead>
 
     <tbody>
+    
       <% @status.each do |s| %>
+       
         <tr>
+          <% if s.user_id == current_user.id %>
           
-          <td> <%= s.project_name %> </td>
-          <td> <%= s.working_hours %> </td>
-          <td> <%= s.task %> </td>
-         
+            <td> <%= s.project_name %> </td>
+            <td> <%= s.working_hours %> </td>
+            <td> <%= s.task %> </td>
+          <%end%>
         </tr>
       <% end %>
     </tbody>

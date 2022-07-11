@@ -8,18 +8,20 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-<section>
-  <%= render 'layouts/header'%>
-</section>
-<body >
-  <strong><p class="notice"><%= notice%></p></strong>
-  <p class="alert"><%= alert%></p>
-<main role="main" class="container">
-  <%=yield%>
-     
-</main>   
-</body>
- <section>
-  <%= render 'layouts/footer'%>
-  </section>       
+    <section>
+      <%= render 'layouts/header'%>
+    </section>
+  
+    <body >
+      <p class="notice"><%= notice%></p>
+      <p class="alert"><%= alert%></p>
+      
+      <main role="main" class="container">
+        <%=yield%>
+      </main>   
+    </body>
+    
+    <section>
+      <%= render 'layouts/footer'%>
+    </section>       
 
