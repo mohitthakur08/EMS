@@ -20,7 +20,7 @@ class UsersController < ApplicationController
  
 
   def index
-    @users = User.all
+    @users = User.page params[:page]
     @projects =Project.all
   end
 
