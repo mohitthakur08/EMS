@@ -19,8 +19,10 @@
         <tr>
           <td> <%= s.user.email %> </td>
           <td> <%= s.project_name %> </td>
-          <td> <%= s.working_hours %> </td>
-          <td> <%= s.task %> </td>
+          <td> <%= s.total_hours %> </td>
+          
+          <td><%= link_to "show",statuses_daily_task_status_path(id: s.id), class:"btn btn-outline-info"%></td>
+        
         </tr>
       <% end %>
     </tbody>
@@ -48,7 +50,7 @@
           <% if s.user_id == current_user.id %>
             <td> <%= s.user.email %> </td>
             <td> <%= s.project_name %> </td>
-            <td> <%= s.working_hours %> </td>
+            <td> <%= s.total_hours %> </td>
             <td> <%= s.task %> </td>
           
           <%end%>
