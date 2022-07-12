@@ -12,6 +12,7 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'rails', '~> 6.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
+gem 'mailcatcher'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
