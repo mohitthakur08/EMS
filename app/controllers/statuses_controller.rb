@@ -13,9 +13,14 @@ class StatusesController < ApplicationController
   def index
     @status=Status.all
   end
+
+  def daily_task
+    @status=Status.find(params[:id])
+  end
+
   
   private
     def status_params
-      params.require(:status).permit(:project_name, :working_hours, :task ,:user_id, :manager_id)
+      params.require(:status).permit(:project_name, :total_hours, :task ,:user_id, :manager_id)
     end
 end

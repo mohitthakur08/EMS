@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   devise_for :users 
   # delete '/users/sign_out', to: "home#destroy"
   root to: "home#index"
-  resources :statuses
+  resources :statuses do
+    member do 
+      get 'statuses/daily_task'
+    end
+  end
   resources :projects
   resources :leaves do 
     member do 
