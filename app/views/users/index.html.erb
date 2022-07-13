@@ -35,36 +35,34 @@
 
 
 <%else%>
-  <h1 class=text-center> All Projects</h1>
-  <%= paginate @users %>
-  <table class="table table-striped">
+  
+    <section>
+    <h1 class=text-center> All Projects</h1>
+    <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">First name</th>
-        <th scope="col">last_name</th>
+        <th scope="col">ID</th>
         <th scope="col">project name</th>
         <th scope="col">status</th>
-        <th scope="col">manager id</th>
+        <th scope="col">manager Id</th>
       </tr>
     </thead>
-    
     <tbody>
-
-      <% @projects.each do |project| %>
-        <tr>
-          <% if project.user_id == current_user.id %>
-          <td> <%= project.id %></td>
-          <td> <%= project.user.first_name %></td>
-          <td> <%= project.user.last_name %></td>
-          <td> <%= project.project_name %></td>
-          <td> <%= project.status %></td>
-          <td>  <%= project.manager_id %></td>
-        </tr>
-      <%end%>
+    <%# <% @projects.each do |project| %> 
+     <tr>
+     <% current_user.projects.each do |project| %>
+      
+       <td><%= project.id %></td>
+      
+        <td><%= project.project_name %></td>
+        <td><%= project.status %></td>
+        <td><%= project.manager_id %> </td>
+      </tr>
+    
+    <% end %>
     </tbody>
-  <% end %>
-  </table>
+    </table>
+  </section> 
   <%= paginate @users %>
 <%end%>
 
