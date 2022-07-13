@@ -4,8 +4,6 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">First name</th>
-        <th scope="col">last name</th>
         <th scope="col">project name</th>
         <th scope="col">status</th>
         <th scope="col">manager Id</th>
@@ -15,12 +13,12 @@
     <% @projects.each do |project| %>
      <tr>
       
-       <td><%= project.user_id %></td>
-        <td><%= project.user.first_name %></td>
-        <td><%= project.user.last_name %></td>
+       <td><%= project.id %></td>
+      
         <td><%= project.project_name %></td>
         <td><%= project.status %></td>
         <td><%= project.manager_id %> </td>
+        <td><%= link_to "Assign",users_index_path(id:project.id), class: "btn btn-outline-success"%></td>
       </tr>
     <% end %>
     </tbody>

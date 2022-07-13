@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   #get 'leaves/approve_leave'
-  
+  post 'projects/assign_project'
+  delete 'projects/unassign_project'
   get 'status/new'
   get 'status/update'
   get 'users/index', to: "users#index"

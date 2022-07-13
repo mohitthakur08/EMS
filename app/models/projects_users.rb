@@ -1,0 +1,3 @@
+class ProjectsUser <ApplicationRecord
+  
+end

@@ -17,11 +17,12 @@ class UsersController < ApplicationController
     end
   end
 
- 
+
 
   def index
     @users = User.page params[:page]
     @projects =Project.all
+    @project_id=params[:id]
   end
 
   def add_new_user

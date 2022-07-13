@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_12_103706) do
+ActiveRecord::Schema.define(version: 2022_07_13_075513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,12 +38,16 @@ ActiveRecord::Schema.define(version: 2022_07_12_103706) do
   create_table "projects", force: :cascade do |t|
     t.string "project_name"
     t.boolean "status"
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "manager_id"
-    t.index ["user_id", "created_at"], name: "index_projects_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "projects_users", id: false, force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id"
+    t.index ["user_id", "project_id"], name: "index_projects_users_on_user_id_and_project_id"
   end
 
   create_table "statuses", force: :cascade do |t|
@@ -84,6 +88,7 @@ ActiveRecord::Schema.define(version: 2022_07_12_103706) do
 
   add_foreign_key "leaves", "users"
   add_foreign_key "managers", "users"
-  add_foreign_key "projects", "users"
+  add_foreign_key "projects_users", "projects"
+  add_foreign_key "projects_users", "users"
   add_foreign_key "statuses", "users"
 end
