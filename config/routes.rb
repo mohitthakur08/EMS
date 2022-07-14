@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'users/index', to: "users#index"
   get 'users/show' ,to: "users#show"
   get  'employees',  to: 'users#new'
-  # get 'users/add_new_user',  to: 'users#create'
+  post 'users/add_new_user'
   get 'users/add_new_user', to: 'users#add_new_user' 
   devise_for :users 
   # delete '/users/sign_out', to: "home#destroy"
