@@ -122,13 +122,13 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'https://salty-hamlet-58375.herokuapp.com' }
-  ActionMailer::Base.smtp_settings = { 
-    address:              'smtp.gmail.com',
-    port:                  587,
-    authentication:       'plain',
-    user_name:            'postnow56@gmail.com',
-    password:             'enxtgdsaslkxlffs',
-    domain:               'heroku.com',
+  config.action_mailer.smtp_settings = { 
+    address:'smtp.gmail.com',
+    port:587,
+    authentication:'plain',
+    user_name: 'postnow56@gmail.com',
+    password: 'enxtgdsaslkxlffs',
+    domain: 'heroku.com',
     enable_starttls_auto: true
   }
 

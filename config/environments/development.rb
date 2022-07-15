@@ -80,7 +80,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
@@ -88,7 +88,8 @@ Rails.application.configure do
     authentication: "plain",
     user_name: 'postnow56@gmail.com',
     password: 'enxtgdsaslkxlffs',
-    domain: "smtp.gmail.com"
+    domain: "smtp.gmail.com",
+    enable_starttls_auto: true
   }
   
   # Uncomment if you wish to allow Action Cable access from any origin.
