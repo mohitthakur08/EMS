@@ -1,3 +1,2 @@
-class ProjectsUser <ApplicationRecord
-  
+class ProjectsUser < ApplicationRecord
 end

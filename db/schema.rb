@@ -10,85 +10,99 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_13_075513) do
-
+ActiveRecord::Schema.define(version: 20_220_713_075_513) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "leaves", force: :cascade do |t|
-    t.date "leave_from"
-    t.date "leave_to"
-    t.string "leave_mail_to"
-    t.text "leave_reason"
-    t.integer "manager_id"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "status", default: 0
-    t.index ["user_id"], name: "index_leaves_on_user_id"
+  create_table 'daily_statuses', force: :cascade do |t|
+    t.string 'p_status'
+    t.text 'working_hours'
+    t.string 'project_name'
+    t.text 'task'
+    t.bigint 'user_id', null: false
+    t.bigint 'manager_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['manager_id'], name: 'index_daily_statuses_on_manager_id'
+    t.index ['user_id'], name: 'index_daily_statuses_on_user_id'
   end
 
-  create_table "managers", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_managers_on_user_id"
+  create_table 'leaves', force: :cascade do |t|
+    t.date 'leave_from'
+    t.date 'leave_to'
+    t.string 'leave_mail_to'
+    t.text 'leave_reason'
+    t.integer 'manager_id'
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'status', default: 0
+    t.index ['user_id'], name: 'index_leaves_on_user_id'
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "project_name"
-    t.boolean "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "manager_id"
+  create_table 'managers', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['user_id'], name: 'index_managers_on_user_id'
   end
 
-  create_table "projects_users", id: false, force: :cascade do |t|
-    t.bigint "project_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["project_id", "user_id"], name: "index_projects_users_on_project_id_and_user_id"
-    t.index ["user_id", "project_id"], name: "index_projects_users_on_user_id_and_project_id"
+  create_table 'projects', force: :cascade do |t|
+    t.string 'project_name'
+    t.boolean 'status'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'manager_id'
   end
 
-  create_table "statuses", force: :cascade do |t|
-    t.string "project_name"
-    t.text "task"
-    t.bigint "user_id", null: false
-    t.integer "manager_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "total_hours", default: 0
-    t.index ["user_id", "created_at"], name: "index_statuses_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_statuses_on_user_id"
+  create_table 'projects_users', id: false, force: :cascade do |t|
+    t.bigint 'project_id', null: false
+    t.bigint 'user_id', null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "first_name", default: "", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "last_name"
-    t.string "password"
-    t.integer "age"
-    t.string "type"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "admin"
-    t.integer "manager_id"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["manager_id"], name: "index_users_on_manager_id", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  create_table 'statuses', force: :cascade do |t|
+    t.string 'project_name'
+    t.text 'task'
+    t.bigint 'user_id', null: false
+    t.integer 'manager_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'total_hours', default: 0
+    t.index %w[user_id created_at], name: 'index_statuses_on_user_id_and_created_at'
+    t.index ['user_id'], name: 'index_statuses_on_user_id'
   end
 
-  add_foreign_key "leaves", "users"
-  add_foreign_key "managers", "users"
-  add_foreign_key "projects_users", "projects"
-  add_foreign_key "projects_users", "users"
-  add_foreign_key "statuses", "users"
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'password'
+    t.integer 'age'
+    t.string 'type'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'unconfirmed_email'
+    t.boolean 'admin'
+    t.integer 'manager_id'
+    t.string 'activation_digest'
+    t.boolean 'activated', default: false
+    t.datetime 'activated_at'
+    t.string 'confirmation_token'
+    t.datetime 'confirmed_at'
+    t.datetime 'confirmation_sent_at'
+    t.index ['confirmation_token'], name: 'index_users_on_confirmation_token', unique: true
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['manager_id'], name: 'index_users_on_manager_id', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  end
+
+  add_foreign_key 'daily_statuses', 'managers'
+  add_foreign_key 'daily_statuses', 'users'
+  add_foreign_key 'leaves', 'users'
+  add_foreign_key 'managers', 'users'
+  add_foreign_key 'statuses', 'users'
 end
