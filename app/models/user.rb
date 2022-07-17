@@ -5,7 +5,8 @@ class User < ApplicationRecord
   has_many :teammates, class_name: 'User',
                        foreign_key: 'manager_id'
   belongs_to :manager, class_name: 'User',
-                       foreign_key: 'manager_id'
+                       foreign_key: 'manager_id',optional: true
+                       
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   default_scope -> { order(id: :asc) }
