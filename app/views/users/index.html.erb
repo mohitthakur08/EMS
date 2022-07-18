@@ -23,8 +23,9 @@
           <%= name.project_name%><span>,</span>
           <%end%>
           </td>
+         
            <td><%= link_to "add",projects_assign_project_path(user_id:user.id,project_id:@project_id), method: :post, class: "btn btn-outline-success"%>
-           <td><%= link_to "remove",projects_unassign_project_path(user_id:user.id,project_id:@project_id), method: :delete ,class: "btn btn-outline-success"%>
+           <td><%= link_to "remove",projects_unassign_project_path(user_id:user.id,project_id:@project_id), method: :delete ,class: "btn btn-outline-danger"%>
           
         </tr>
       <% end %>

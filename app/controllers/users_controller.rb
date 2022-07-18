@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     @projects = Project.all
     @project_id = params[:id]
   end
+  
+  
 
   def add_new_user
     @user = User.new
@@ -27,6 +29,8 @@ class UsersController < ApplicationController
   def new_user_params
     params.require(:user).permit(:first_name, :email, :password)
   end
+  
+ 
 
   # def user_params
   #   params.require(:user).permit(:first_name, :email, :password )
