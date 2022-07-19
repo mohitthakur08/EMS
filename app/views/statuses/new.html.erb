@@ -2,7 +2,7 @@
   <div class="col-md-6 col-md-offset-3">
 <%= form_with(model: @status, local: true) do |f| %>
       <%= f.label :project_name %>
-      <%= f.text_field :project_name, class: 'form-control' %>
+      <%= f.collection_select :project_name, Project.all, :id, :project_name %><br>
 
       <%= f.label :Task %>
       <%= f.text_field :task, class: 'form-control' %>
@@ -12,8 +12,8 @@
 
       <%= f.hidden_field :user_id, value:current_user.id %>
 
-      <%= f.label :manager_id %>
-      <%= f.number_field :manager_id, class: 'form-control' %>
+      <%= f.label :manager_id %><br>
+      <%= f.collection_select :manager_id, User.where(type:"Manager"), :id, :first_name %><br>
 
       <%= f.submit "Upload status", class: "btn btn-primary" %>
     <% end %>
