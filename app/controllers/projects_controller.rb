@@ -5,8 +5,13 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.save
-    redirect_to root_path
+    if @project.save
+      flash[:notice] = 'Project Created'
+      redirect_to projects_path
+    else
+      flash[:alert] = 'Please Fill all required fields'
+      redirect_to new_project_path
+    end
   end
 
   def assign_project

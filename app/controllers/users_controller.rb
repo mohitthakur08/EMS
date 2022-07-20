@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show; end
 
   def create
-    @user = User.new(new_user_params)
+    @user = User.new(user_params)
     redirect_to root_path if @user.save
   end
 
@@ -17,22 +17,10 @@ class UsersController < ApplicationController
     @projects = Project.all
     @project_id = params[:id]
   end
-  
-  
-
-  def add_new_user
-    @user = User.new
-  end
 
   private
-
-  def new_user_params
-    params.require(:user).permit(:first_name, :email, :password,  )
-  end
   
- 
-
-  # def user_params
-  #   params.require(:user).permit(:first_name, :email, :password )
-  # end
+  def user_params
+    params.require(:user).permit(:first_name, :email, :password )
+  end
 end

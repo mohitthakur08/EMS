@@ -24,8 +24,10 @@
             <td> <%= l.leave_reason %> </td>
             <td> <strong><%= l.status %></strong> </td>
             <td> <%= l.user.email %> </td>
-            <td><%= link_to "Approve",leaves_approve_leave_leafe_path(l), class: "btn btn-outline-success"%>
-            <td><%= link_to "reject",leaves_reject_leave_leafe_path(l), class: "btn btn-outline-danger"%>
+            <td><% if l.status == "Hold" %>
+            <%= link_to "Approve",leaves_approve_leave_leafe_path(l), class: "btn btn-outline-success"%>
+            <%= link_to "reject",leaves_reject_leave_leafe_path(l), class: "btn btn-outline-danger"%></td>
+            <%end%>
           <%elsif l.user_id == current_user.id %>
             <td> <%= l.leave_from %> </td>
             <td> <%= l.leave_to %> </td>

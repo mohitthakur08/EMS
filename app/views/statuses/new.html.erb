@@ -1,8 +1,8 @@
-<div class="row">
+
   <div class="col-md-6 col-md-offset-3">
 <%= form_with(model: @status, local: true) do |f| %>
       <%= f.label :project_name %>
-      <%= f.collection_select :project_name, Project.all, :id, :project_name %><br>
+      <%= f.collection_select :project_name, Project.all, :project_name, :project_name %><br>
 
       <%= f.label :Task %>
       <%= f.text_field :task, class: 'form-control' %>

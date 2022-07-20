@@ -15,3 +15,5 @@ User.create!(first_name: 'Mohit', last_name: 'Thakur', email: 'Mohit@bestpeers.c
   User.create!(first_name: name, email: email,
                password: password)
 end
+
+

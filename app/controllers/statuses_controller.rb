@@ -5,8 +5,14 @@ class StatusesController < ApplicationController
 
   def create
     @status = Status.new(status_params)
-    @status.save
-    redirect_to users_show_path
+    if @status.save
+      flash[:notice] = 'Status Uploades'
+      redirect_to statuses_path
+    else
+      flash[:alert] = 'Please Fill all required fields'
+      redirect_to new_status_path
+    end
+
   end
 
   def index
