@@ -15,5 +15,12 @@ User.create!(first_name: 'Mohit', last_name: 'Thakur', email: 'Mohit@bestpeers.c
   User.create!(first_name: name, email: email,
                password: password)
 end
-
+5.times do |n|
+  name = Faker::Name.name
+  email = "example-#{n - 1}@gmail.com"
+  password = 'password'
+  type = manager
+  User.create!(first_name: name, email: email,
+               password: password, type:manager)
+end
 

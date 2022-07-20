@@ -7,7 +7,7 @@ class LeavesController < ApplicationController
   def create
     @leave = Leave.new(leave_params)
     if @leave.save
-      flash[:notice] = 'Leave Request send'
+      flash.now[:notice] = 'Leave Request send'
       redirect_to leaves_path
     else
       flash[:alert] = "please fill all required field"
