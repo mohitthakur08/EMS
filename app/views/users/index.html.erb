@@ -18,15 +18,11 @@
           <td>  <%= user.id %> </td>
           <td> <%= user.first_name %> </td>
           <td> <%= user.email %> </td>
-          <td> 
-          <% user.projects.each do |name|%>
-          <%= name.project_name%><span>,</span>
-          <%end%>
+          <td> <% user.projects.each do |name|%>
+                <%= name.project_name%><span>,</span>
+               <%end%>
           </td>
-         
            <td><%= link_to "add",projects_assign_project_path(user_id:user.id,project_id:@project_id), method: :post, class: "btn btn-outline-success"%>
-           <td><%= link_to "remove",projects_unassign_project_path(user_id:user.id,project_id:@project_id), method: :delete ,class: "btn btn-outline-danger"%>
-          
         </tr>
       <% end %>
     </tbody>
