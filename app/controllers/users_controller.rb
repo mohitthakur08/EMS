@@ -6,13 +6,12 @@ class UsersController < ApplicationController
   end
 
   def new_employee
-    @employee=User.new
+    @user=User.new
   end
 
   def create_employee
-    byebug
-    @employee=User.new(employee_params)
-    if @employee.save
+    @user=User.new(employee_params)
+    if @user.save
       flash[:notice] = 'Employee Created'
       redirect_to root_path
     else
@@ -35,10 +34,11 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:first_name, :email, :password )
+    params.require(:user).permit(:first_name, :email, :password)
+  end
+  
+  def employee_params
+    params.permit(:first_name, :email, :password)
   end
 
-  def employee_params
-    params.require(:employee).permit(:first_name, :email, :password)
-  end
 end
