@@ -13,7 +13,7 @@
       <%= f.hidden_field :user_id, value:current_user.id %>
 
       <%= f.label :manager_id %><br>
-      <%= f.collection_select :manager_id, [current_user.manager], :id, :first_name %><br>
+      <%= f.collection_select :manager_id, User.all.where(type:"Manager"), :id, :first_name %><br>
       
       <%= f.submit "Upload status", class: "btn btn-primary" %>
     <% end %>

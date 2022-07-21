@@ -11,13 +11,13 @@
       <%= f.text_field :leave_reason, class: 'form-control' %><br>
 
       <%= f.label :leave_mail_to %>
-      <%= f.collection_select :manager_id, [current_user.manager], :id, :email %><br>
+      <%= f.collection_select :manager_id, User.all.where(type:"Manager"), :email, :email %><br>
       
 
       <%= f.hidden_field :user_id, value:current_user.id %><br>
 
       <%= f.label :manager %>
-      <%= f.collection_select :manager_id, [current_user.manager], :id, :first_name %><br>
+      <%= f.collection_select :manager_id,User.all.where(type:"Manager"), :id, :first_name %><br>
 
       <%= f.submit "Apply", class: "btn btn-primary" %>
     <% end %>
