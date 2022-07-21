@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StatusesController < ApplicationController
   def new
     @status = Status.new
@@ -12,7 +14,6 @@ class StatusesController < ApplicationController
       flash[:alert] = 'Please Fill all required fields'
       redirect_to new_status_path
     end
-
   end
 
   def index

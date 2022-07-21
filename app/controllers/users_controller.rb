@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
@@ -6,18 +8,17 @@ class UsersController < ApplicationController
   end
 
   def new_employee
-    @user=User.new
+    @user = User.new
   end
 
   def create_employee
-    @user=User.new(employee_params)
+    @user = User.new(employee_params)
     if @user.save
       flash[:notice] = 'Employee Created'
-      redirect_to root_path
     else
-      flash[:alert] = "please fill all required field"
-      redirect_to root_path
+      flash[:alert] = 'please fill all required field'
     end
+    redirect_to root_path
   end
 
   def create
@@ -32,13 +33,12 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:first_name, :email, :password)
   end
-  
+
   def employee_params
     params.permit(:first_name, :email, :password)
   end
-
 end

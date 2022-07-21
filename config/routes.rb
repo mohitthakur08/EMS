@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # get 'leaves/approve_leave'
   post 'projects/assign_project'
@@ -6,7 +8,7 @@ Rails.application.routes.draw do
   get 'status/update'
   get 'users/index', to: 'users#index'
   get 'users/show', to: 'users#show'
-  get  'employees', to: 'users#new'
+  get 'employees', to: 'users#new'
   get 'users/new_employee'
   post 'users/create_employee', to: 'users#create_employee'
   devise_for :users

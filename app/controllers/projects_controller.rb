@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
   def new
     @project = Project.new
@@ -17,9 +19,7 @@ class ProjectsController < ApplicationController
   def assign_project
     user = User.find(params[:user_id])
     project_id = Project.find(params[:project_id])
-    if user.projects << project_id
-      flash[:notice] = 'project assign'
-    end
+    flash[:notice] = 'project assign' if user.projects << project_id
   end
 
   def unassign_project

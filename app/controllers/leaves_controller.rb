@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class LeavesController < ApplicationController
-  before_action :find_leave_id, only: [:approve_leave, :reject_leave]
+  before_action :find_leave_id, only: %i[approve_leave reject_leave]
   def new
     @leave = Leave.new
   end
@@ -10,7 +12,7 @@ class LeavesController < ApplicationController
       flash.now[:notice] = 'Leave Request send'
       redirect_to leaves_path
     else
-      flash[:alert] = "please fill all required field"
+      flash[:alert] = 'please fill all required field'
       redirect_to new_leafe_path
     end
   end
@@ -40,8 +42,8 @@ class LeavesController < ApplicationController
   def leave_params
     params.require(:leave).permit(:leave_from, :leave_to, :leave_mail_to, :leave_reason, :user_id, :manager_id)
   end
+
   def find_leave_id
-    leave_id=Leave.find(params[:id])
-    return leave_id
+    Leave.find(params[:id])
   end
 end
