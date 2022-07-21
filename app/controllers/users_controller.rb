@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create_employee
+    
     @employee=User.new(employee_params)
     if @employee.save
       flash[:notice] = 'Employee Created'
