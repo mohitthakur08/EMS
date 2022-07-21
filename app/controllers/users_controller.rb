@@ -5,7 +5,20 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def show; end
+  def new_employee
+    @employee=User.new
+  end
+
+  def create_employee
+    @employee=User.new(employee_params)
+    if @employee.save
+      flash[:notice] = 'Employee Created'
+      redirect_to root_path
+    else
+      flash[:alert] = "please fill all required field"
+      redirect_to root_path
+    end
+  end
 
   def create
     @user = User.new(user_params)
@@ -22,5 +35,9 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:first_name, :email, :password )
+  end
+
+  def employee_params
+    params.require(:employee).permit(:first_name, :email, :password)
   end
 end

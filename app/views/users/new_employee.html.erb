@@ -3,8 +3,8 @@
 
 <h2>Sign up</h2>
 
-<%= form_with url: users_add_new_user_path, method: :post  do |f| %>
-  
+<%= form_with(url: users_create_employee_path,method: :post, local: true) do |f| %>
+ 
 
   <div class="field">
     <%= f.label :first_name %><br />
@@ -23,6 +23,7 @@
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
+  
   
   <div class="actions">
     <%= f.submit "Sign up" %>

@@ -13,10 +13,11 @@
            
             <li class="nav-item">
               <%= link_to "home", users_show_path , class:"btn btn-dark"  %>
-            <% if user_signed_in?%>
-            
+            <% if user_signed_in? %>
+              <%if !admin_user%>
               <%= link_to "leave", new_leafe_path , class:"btn btn-dark"  %>
               <%= link_to "status", new_status_path , class:"btn btn-dark"  %>
+              <%end%>
               <% if admin_user%>
                 <%= link_to "project", new_project_path , class:"btn btn-dark"  %>
               <%end%>

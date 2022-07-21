@@ -1,8 +1,5 @@
-
 <%if admin_user %>
-
 <h1 class=text-center>Daily status</h1>
-
   <table class="table table-striped">
     <thead>
       <tr>
@@ -12,15 +9,12 @@
         <th scope="col">Task</th>
       </tr>
     </thead>
-
-    <tbody>
-    
+    <tbody>    
       <% @status.each do |s| %>
         <tr>
           <td> <%= s.user.email %> </td>
           <td> <%= s.project_name %> </td>
           <td> <%= s.total_hours %> </td>
-          
           <td><%= link_to "show",statuses_daily_task_status_path(id: s.id), class:"btn btn-outline-info"%></td>
         
         </tr>
@@ -42,17 +36,13 @@
     </thead>
 
     <tbody>
-    
-      <% @status.each do |s| %>
-       
-        <tr>
-        
+      <% @status.each do |s| %>       
+        <tr>        
           <% if s.user_id == current_user.id %>
             <td> <%= s.user.email %> </td>
             <td> <%= s.project_name %> </td>
             <td> <%= s.total_hours %> </td>
-            <td> <%= s.task %> </td>
-          
+            <td> <%= s.task %> </td>          
           <%end%>
         </tr>
       <% end %>

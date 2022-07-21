@@ -17,8 +17,9 @@ class ProjectsController < ApplicationController
   def assign_project
     user = User.find(params[:user_id])
     project_id = Project.find(params[:project_id])
-    user.projects << project_id
-    redirect_to users_index_path
+    if user.projects << project_id
+      flash[:notice] = 'project assign'
+    end
   end
 
   def unassign_project
