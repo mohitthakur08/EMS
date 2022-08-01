@@ -27,5 +27,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do 
+    namespace :v1 do 
+      resources :users
+      resources :statuses
+      resources :projects
+      resources :leaves
+    end
+  end
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
